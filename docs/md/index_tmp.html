@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+
+Dracula Theme v1.2.0
+
+https://github.com/zenorocha/dracula-theme
+
+Copyright 2015, All rights reserved
+
+Code licensed under the MIT license
+http://zenorocha.mit-license.org
+
+@author Ãverton Ribeiro <nuxlli@gmail.com>
+@author Zeno Rocha <hi@zenorocha.com>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #282a36;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #8be9fd;
+}
+
+.hljs-function .hljs-keyword {
+  color: #ff79c6;
+}
+
+.hljs,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #f1fa8c;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #6272a4;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="binhs-neural-network-developer-documentation"><strong>Binh's Neural Network</strong> Developer Documentation</h1>
+<h1 id="table-of-content">Table Of Content</h1>
+<ol>
+<li>Introduction and Problem Statement</li>
+<li>Manual</li>
+<li>Solution Design and Implementation</li>
+<li>Testing and Results</li>
+<li>Conclusion and References</li>
+</ol>
+<h1 id="1-introduction-and-problem-statement">1. Introduction and Problem Statement</h1>
+<p><strong>Binh's Neural Network</strong> is a project to demonstrate a <strong>Neural Network</strong> Proof Of Concept by teaching a neural network to approximate a mathematical function <strong>y=sin(x)^2</strong>. The project consists of three parts:</p>
+<ul>
+<li><strong>Matrix</strong>: The Matrix is coded from scratch in C++ using dynamic memory allocation for doubles. This class is used to support neurons calculation like weights multiplication, bias addition.</li>
+<li><strong>Neural Network</strong>: The Neural Network is coded from scratch in C++ using a Matrix class and a Neural Network class. This class is used to create, train and modify a neural network using matrix calculations.</li>
+<li><strong>Controller</strong>: The Controller is coded from scratch in C++ using basic principles of a Turing's State Machine. This class is used to handle the application logic, mainly the CLI and handle user interactions with the Neural Network.</li>
+</ul>
+<p>The project is built on the statement that:</p>
+<ul>
+<li><strong>No external library</strong> is used except for <strong>econio</strong>: colored output and raw keyboard handling for Linux and Windows console in C and C++.</li>
+<li>Everything must be <strong>built from the ground up</strong>: reduce the usage of standard libraries as much as possible.</li>
+<li><strong>Accuracy</strong> of the model can be <strong>negligible</strong> as long as: the model can show progress of learning.</li>
+</ul>
+<p>Hence, the <strong>most impressive</strong> part of this project is that <strong>it is built from scratch</strong>.</p>
+<h1 id="2-manual">2. Manual</h1>
+<p>The project was originally developed in XCode IDE on MacOS, however, it was later ported to work independently of any IDE because of incompatibilites of &quot;econio&quot; on XCode console. This means you can run the project <strong>insanely straightforward</strong> with just <strong>a few simple commands</strong>, if you're using MacOS or <strong>any Linux/Unix based OS</strong>.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Run these scripts in the project root</span>
+<span class="hljs-comment"># These scripts are written by me to automate the process</span>
+
+<span class="hljs-comment"># To run the project (Project must be built first)</span>
+./run.sh
+
+<span class="hljs-comment"># To build the project (without running it)</span>
+./build.sh
+
+<span class="hljs-comment"># To build the project, then run it</span>
+./build_and_run.sh
+</div></code></pre>
+<h1 id="3-solution-design-and-implementation">3. Solution Design and Implementation</h1>
+<p>As stated before, the project consists of three parts. These parts are build on top of eachother: <strong>Controller &gt; NeuralNetwork &gt; Matrix</strong>. We will explain from the Matrix first, then go up each class and explain how they work.</p>
+<p>For a <strong>brief</strong> of the underworking <strong>princile of the program</strong>, the <strong>neural network</strong> is a <strong>graph</strong> consisting of <strong>nodes and edges</strong>, divided in layers. Each <strong>nodes</strong> has <strong>inputs and outputs</strong>, which are calculated based on weights of the input edges and the activation function. Each layer <strong>connects in series</strong>, therefore passing <strong>input from one side</strong> and <strong>generate output</strong> on the other side (<strong>Forward Pass</strong>). Using <strong>backward propagation</strong>, we <strong>optimize the weights</strong> in the network, modifying the outputs to be closer to the expected output.</p>
+<p>The calculations of <strong>Foward Pass</strong> and <strong>Backward Propagation</strong> are carried out with <strong>Matrix</strong> calculations.</p>
+<p>The <strong>interface</strong> of the program is based on a <strong>State Machine</strong>, abstracted by the <strong>Controller</strong> class.</p>
+<p>This part has been mentioned earlier in my Project Selection Form.</p>
+<h2 id="31-matrix">3.1. Matrix</h2>
+<p>The Matrix class is the <strong>head of the operations</strong> in a Neural Network. We often think of <strong>Neural Networks as a set of neurons</strong>, but <strong>calculation with neuron object</strong> is a <strong>big mess and waste of time</strong>. That is why modern computing have special ALUs for AI/ML that are specialized in matrix calculation.</p>
+<p>This class representation can be shown in the below diagram:
+<img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/Matrix.png" alt="Matrix"></p>
+<p>To explain how the Matrix class works, we will go through the <strong>class declaration</strong> of <strong>Matrix</strong>, as this is simple and straightfoward.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Matrix</span>
+{</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// Dimensions of the matrix</span>
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> rows, cols;
+
+    <span class="hljs-comment">// Local array that stores values</span>
+    <span class="hljs-keyword">double</span> **local_array;
+
+    <span class="hljs-comment">// Matrix Constructor</span>
+    <span class="hljs-comment">// rows: rows</span>
+    <span class="hljs-comment">// cols: cols</span>
+    <span class="hljs-comment">// randomized: decide if value is randomized or just 0 at initialization</span>
+    Matrix(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> rows = <span class="hljs-number">1</span>, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> cols = <span class="hljs-number">1</span>, <span class="hljs-keyword">bool</span> randomized = <span class="hljs-literal">true</span>);
+
+    <span class="hljs-comment">// Copy constructor</span>
+    Matrix(<span class="hljs-keyword">const</span> Matrix &amp;original);
+
+    <span class="hljs-comment">// Construct a matrix from file</span>
+    <span class="hljs-comment">// This is created to simplify the process of saving and loading Neural Networks</span>
+    Matrix(ifstream &amp;file);
+
+    <span class="hljs-comment">// Deconstructor</span>
+    <span class="hljs-comment">// Since this class use dynamic memory, it has a destructor that destroys dynamic living being using the 5 C++ infinity stones.</span>
+    ~Matrix();
+
+    <span class="hljs-comment">// Basic matrix operators we learn in Linear Algebra</span>
+    Matrix &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Matrix &amp;original);
+
+    Matrix &amp;<span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">const</span> Matrix &amp;other);
+
+    Matrix &amp;<span class="hljs-keyword">operator</span>-=(<span class="hljs-keyword">const</span> Matrix &amp;other);
+
+    Matrix &amp;<span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> Matrix &amp;other);
+
+    Matrix &amp;<span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> &amp;a);
+
+    <span class="hljs-function">Matrix <span class="hljs-title">transpose</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function">Matrix <span class="hljs-title">hadamard</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Matrix &amp;other)</span></span>;
+
+    <span class="hljs-comment">// Apply a function on all values of matrix</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">applyFunction</span><span class="hljs-params">(<span class="hljs-keyword">double</span> (*func)(<span class="hljs-keyword">double</span>))</span></span>;
+
+    <span class="hljs-comment">// Dynamic memory allocate/deallocate</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">allocateMemory</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deallocateMemory</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// Print out the matrix</span>
+    <span class="hljs-comment">// For debugging</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printMatrix</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// Save matrix to a file</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">saveMatrix</span><span class="hljs-params">(ofstream &amp;file)</span></span>;
+
+    <span class="hljs-comment">// Other operators</span>
+    <span class="hljs-comment">// Normally we have to have to overload member functions like the above but it made it more complicated so I stick with the non-member function</span>
+    <span class="hljs-keyword">friend</span> Matrix <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Matrix &amp;first, <span class="hljs-keyword">const</span> Matrix &amp;second);
+    <span class="hljs-keyword">friend</span> Matrix <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> Matrix &amp;first, <span class="hljs-keyword">const</span> Matrix &amp;second);
+    <span class="hljs-keyword">friend</span> Matrix <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> Matrix &amp;first, <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> &amp;second);
+    <span class="hljs-keyword">friend</span> Matrix <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Matrix &amp;first, <span class="hljs-keyword">const</span> Matrix &amp;second);
+};
+</div></code></pre>
+<p>Unlike other classes in this project, the Matrix class does <strong>implement error handling</strong> since it is easy to mess up matrix calculations in a neural network. For example, in the multiplication:</p>
+<pre class="hljs"><code><div>Matrix &amp;Matrix::<span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> Matrix &amp;other)
+{
+    <span class="hljs-comment">// Error handling</span>
+    <span class="hljs-keyword">if</span> (cols != other.rows)
+    {
+        <span class="hljs-keyword">throw</span> domain_error(<span class="hljs-string">"Matrixes can't be multiplied together: mismatch dimensions."</span>);
+    }
+
+    <span class="hljs-function">Matrix <span class="hljs-title">temp</span><span class="hljs-params">(rows, other.cols, <span class="hljs-literal">false</span>)</span></span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; temp.rows; ++i)
+    {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; temp.cols; ++j)
+        {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; cols; ++k)
+            {
+                temp.local_array[i][j] += (local_array[i][k] * other.local_array[k][j]);
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> (*<span class="hljs-keyword">this</span> = temp);
+}
+</div></code></pre>
+<p>This error must be caught upstream. In this project, it is caught in the main function.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">try</span>
+{
+    <span class="hljs-comment">// ... we haven't come to this part yet, be patient</span>
+}
+<span class="hljs-keyword">catch</span> (domain_error e)
+{
+    <span class="hljs-comment">// This will exit the program and show the error</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; e.what();
+}
+</div></code></pre>
+<h2 id="32-neural-network">3.2. Neural Network</h2>
+<p>This class representation can be shown in the below diagram:
+<img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/NeuralNetwork.png" alt="NN"></p>
+<p>To explain the <strong>Neural Network class</strong>, we will go through the class declaration.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NeuralNetwork</span>
+{</span>
+<span class="hljs-keyword">private</span>:
+    Topology topo;
+    <span class="hljs-keyword">double</span> learningRate;
+
+    <span class="hljs-built_in">vector</span>&lt;Matrix&gt; weights;     <span class="hljs-comment">// store each node's weights</span>
+    <span class="hljs-built_in">vector</span>&lt;Matrix&gt; biases;      <span class="hljs-comment">// biases of each layer</span>
+    <span class="hljs-built_in">vector</span>&lt;Matrix&gt; activations; <span class="hljs-comment">// output of each layer</span>
+    <span class="hljs-built_in">vector</span>&lt;Matrix&gt; errors;      <span class="hljs-comment">// store deltas of each layer</span>
+
+<span class="hljs-keyword">public</span>:
+    NeuralNetwork(Topology topo, <span class="hljs-keyword">double</span> learningRate = <span class="hljs-number">0.05</span>);
+    NeuralNetwork(ifstream &amp;file);
+    ~NeuralNetwork();
+
+    <span class="hljs-comment">// Initialize the network, avoid code replication</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initNetwork</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// Foward pass the input</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">forwardPass</span><span class="hljs-params">(Matrix input)</span></span>;
+
+    <span class="hljs-comment">// Optimize the network using backwardPropagation</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">backwardPropagate</span><span class="hljs-params">(Matrix output)</span></span>;
+
+    <span class="hljs-comment">// Save network to file</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">saveNetwork</span><span class="hljs-params">(ofstream &amp;file)</span></span>;
+
+    <span class="hljs-comment">// Train network</span>
+    <span class="hljs-function">Matrix <span class="hljs-title">train</span><span class="hljs-params">(Matrix input, Matrix output)</span></span>;
+
+    <span class="hljs-comment">// Test network</span>
+    <span class="hljs-function">Matrix <span class="hljs-title">test</span><span class="hljs-params">(Matrix input)</span></span>;
+};
+</div></code></pre>
+<p>As you can see, the <strong>Neural Network</strong>, although sounds itimidating, is <strong>actually very simple</strong>. We will go through the functions' definitions as this is the main part of the project. Below are the main and crucial functions for the network to work.</p>
+<pre class="hljs"><code><div>NeuralNetwork::NeuralNetwork(Topology topo, <span class="hljs-keyword">double</span> learningRate)
+{
+    <span class="hljs-keyword">this</span>-&gt;topo = topo;
+    <span class="hljs-keyword">this</span>-&gt;learningRate = learningRate;
+    initNetwork();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">NeuralNetwork::initNetwork</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// Everything has topo - 1 size, because we don't need weights,... for the input layer</span>
+    <span class="hljs-keyword">this</span>-&gt;weights.resize(topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">this</span>-&gt;biases.resize(topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">this</span>-&gt;errors.resize(topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">// Activations store the values of outputs of each node, hence the full size</span>
+    <span class="hljs-keyword">this</span>-&gt;activations.resize(topo.<span class="hljs-built_in">size</span>());
+
+    <span class="hljs-comment">// Randomize the values of weights and biases</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i++)
+    {
+        weights[i] = Matrix(topo[i], topo[i + <span class="hljs-number">1</span>], <span class="hljs-literal">true</span>);
+        biases[i] = Matrix(<span class="hljs-number">1</span>, topo[i + <span class="hljs-number">1</span>], <span class="hljs-literal">true</span>);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">NeuralNetwork::forwardPass</span><span class="hljs-params">(Matrix input)</span>
+</span>{
+    <span class="hljs-comment">// Set input to activation</span>
+    activations[<span class="hljs-number">0</span>] = input;
+
+    <span class="hljs-comment">// Pass through the whole network</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i++)
+    {
+        <span class="hljs-comment">// Initial values by multiplying inputs with weights matrix</span>
+        Matrix dot = activations[i] * weights[i];
+
+        <span class="hljs-comment">// Add the biases</span>
+        Matrix hidden = dot + biases[i];
+
+        <span class="hljs-comment">// Activate the outputs (to introduce non-linear)</span>
+        hidden.applyFunction(activate);
+
+        <span class="hljs-comment">// Save the outputs</span>
+        activations[i + <span class="hljs-number">1</span>] = hidden;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">NeuralNetwork::backwardPropagate</span><span class="hljs-params">(Matrix output)</span>
+</span>{
+    <span class="hljs-comment">// Calculate the deltas</span>
+    errors[topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">2</span>] = activations[topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>] - output;
+
+    <span class="hljs-comment">// Backward traverse the network</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">2</span>; i &gt; <span class="hljs-number">0</span>; i--)
+    {
+        <span class="hljs-comment">// This part is totally from</span>
+        <span class="hljs-comment">// Matt Mazur's mathematical model: https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/</span>
+        <span class="hljs-comment">// Basically, we generate a gradient of errors based on the speed of change of outputs based on the change of weights (or d(act)/d(weights))</span>
+        <span class="hljs-comment">// Then we apply the errors bach to the weights in proportion with the learning rate</span>
+
+        Matrix dot = errors[i] * weights[i].transpose();
+
+        <span class="hljs-comment">// Since we saved the activated values in activate, we need to deriv it back to calculate the errors.</span>
+        Matrix cache = activations[i];
+        cache.applyFunction(activateDerivative);
+        Matrix derivative = cache;
+
+        <span class="hljs-comment">// Formula from Matt Mazur's</span>
+        errors[i - <span class="hljs-number">1</span>] = dot.dotMultiply(derivative);
+    }
+
+    <span class="hljs-comment">// Update the values</span>
+    <span class="hljs-comment">// If we know how much an output change if we change the weights</span>
+    <span class="hljs-comment">// We can update the weights so that the output match perfectly with the desired output</span>
+    <span class="hljs-comment">// We use learningRate to control how much we want it to match</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i++)
+    {
+        Matrix delta = activations[i].transpose() * errors[i];
+        weights[i] = weights[i] - (delta * learningRate);
+        biases[i] = biases[i] - (errors[i] * learningRate);
+    }
+
+    <span class="hljs-keyword">return</span>;
+}
+
+<span class="hljs-function">Matrix <span class="hljs-title">NeuralNetwork::test</span><span class="hljs-params">(Matrix input)</span>
+</span>{
+    <span class="hljs-comment">// To test the network, we just need to foward pass the input</span>
+    forwardPass(input);
+
+    <span class="hljs-comment">// The last layer of activations is the values we need</span>
+    <span class="hljs-comment">// Remember from the foward pass</span>
+    <span class="hljs-keyword">return</span> activations[topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>];
+}
+
+<span class="hljs-function">Matrix <span class="hljs-title">NeuralNetwork::train</span><span class="hljs-params">(Matrix input, Matrix output)</span>
+</span>{
+    <span class="hljs-comment">// To train the network, we foward pass the input, therefore getting the predictions of the output</span>
+    forwardPass(input);
+
+    <span class="hljs-comment">// Then we can calculate the deltas between predictions and expected</span>
+    <span class="hljs-comment">// Backward propagte and we know how much to change the weights based on the learning rates</span>
+    backwardPropagate(output);
+
+    <span class="hljs-keyword">return</span> activations[topo.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>];
+}
+</div></code></pre>
+<p>Along with the functions of the network, there are also the helper functions. These functions are activation functions and is used to introduce non-linearity to the system of equations used by the network. As you can see, if there is no activation function, the whole network is just a big set of equations.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">double</span> <span class="hljs-title">activate</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">tanh</span>(x);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">double</span> <span class="hljs-title">activateDerivative</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> - x * x;
+}
+</div></code></pre>
+<p>To visualize the network, below is a saved file of a Neural Network generated by the program. In there, you can see the topology, weights and biases of the network. This network has 4 layers with 2 hidden layers of size 3 and 4 respectively.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Size of topo, learning rate</span>
+4 0.05
+
+<span class="hljs-comment"># Topo in-depth</span>
+1 3 4 1
+
+<span class="hljs-comment"># Weights</span>
+1 3
+-0.473773 -1.011 1.07464
+3 4
+1.1071 -1.02039 -0.894242 0.0607395
+-0.147152 -0.185371 -0.184267 1.20092
+0.265926 -0.309461 -0.280002 -0.834268
+4 1
+-0.56776
+0.84127
+0.784303
+0.883332
+
+<span class="hljs-comment"># Biases</span>
+1 3
+-0.774578 -1.16094 0.864748
+1 4
+0.811376 0.0179418 0.582895 0.12337
+1 1
+0.286879
+</div></code></pre>
+<p>You can save the network like this (without the comments) by choosing to save the network in the program. The save file can be found under the /data/ dir in the project root. It is called <strong>&quot;network.txt&quot;</strong>.</p>
+<p>When you <strong>load the network from file</strong>, <strong>this file is also selected</strong>.</p>
+<p>In this part, I want to note that the Neural Network <strong>can't be done</strong> without the help of <a href="https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/"><strong>Matt Mazur's Mathematical Model</strong></a>. In this article, he showed us how to <strong>calculate the error derivation</strong> which is the base of <strong>Backward Propagation</strong>.</p>
+<h2 id="33-controller">3.3 Controller</h2>
+<p>Although the project is about AI/ML, the hardest and most interesting part to me is the <strong>Controller</strong>. At the end of BOP1, we learned about <strong>State Machine</strong> and I thought to myself it would be wonderful to use the <strong>State Machine</strong> in an User Interface.</p>
+<p>The <strong>Controller</strong> is an implementation of <strong>Turing's State Machine</strong> in C++. It <strong>captures user inputs</strong> using <strong>econio</strong> and the <strong>default C++ iostream</strong>. These inputs <strong>change the internal state</strong> of the controller, prompt it to <strong>change the outputs of the display</strong>.</p>
+<p>To symbolize the states, it uses an <strong>enum</strong> called <strong>StateNumber</strong>. This stores the <strong>index</strong> for the <strong>transition table</strong> in the State Machine. The <strong>transition table</strong> is an array that stores function at the index symbolized by the enum.</p>
+<p><strong>Each function</strong> renders the output to the user and they can change the states of the machine.</p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/ControllerFlow.png" alt="Controller"></p>
+<p>The class declartion below will help you understand how the class is implemented:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">// To have readability, we use enums to represent the states</span>
+<span class="hljs-keyword">enum</span> StateNumber
+{
+    GEN_MENU = <span class="hljs-number">0</span>,
+    <span class="hljs-comment">// Phase 1</span>
+    CREATE = <span class="hljs-number">1</span>,
+    LOAD = <span class="hljs-number">2</span>,
+
+    <span class="hljs-comment">// Phase 2</span>
+    CONTROL_MENU = <span class="hljs-number">3</span>,
+    TRAIN = <span class="hljs-number">4</span>,
+    TEST = <span class="hljs-number">5</span>,
+    SAVE = <span class="hljs-number">6</span>,
+    EXIT = <span class="hljs-number">7</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Controller</span>
+{</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// internal neural network</span>
+    NeuralNetwork* n;
+
+    <span class="hljs-comment">// Current state of network</span>
+    StateNumber currentState;
+
+    <span class="hljs-comment">// If you use the program, you will see that we have a radio menu controller by arrow keys</span>
+    <span class="hljs-comment">// This is to store where the cursor is pointing in the menu</span>
+    <span class="hljs-keyword">int</span> currentCursorPosition;
+
+    <span class="hljs-comment">// Defining void(void) function as Action function</span>
+    <span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span> <span class="hljs-params">(Controller::*Action)</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// State transitions function</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printBanner</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generationMenu</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">controlMenu</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createNetwork</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">trainNetwork</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">testNetwork</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loadNetwork</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">saveNetwork</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exit</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// State Transitions array</span>
+    Action stateTransitions[<span class="hljs-number">8</span>];
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// Render flag to signal the system</span>
+    <span class="hljs-keyword">bool</span> renderFlag;
+
+    Controller()
+    {
+        <span class="hljs-comment">// Storing functions in arrays</span>
+        stateTransitions[GEN_MENU] = &amp;Controller::generationMenu;
+
+        <span class="hljs-comment">// Phase 1</span>
+        stateTransitions[CREATE] = &amp;Controller::createNetwork;
+        stateTransitions[LOAD] = &amp;Controller::loadNetwork;
+
+        <span class="hljs-comment">// Phase 2</span>
+        stateTransitions[CONTROL_MENU] = &amp;Controller::controlMenu;
+        stateTransitions[TRAIN] = &amp;Controller::trainNetwork;
+        stateTransitions[TEST] = &amp;Controller::testNetwork;
+        stateTransitions[SAVE] = &amp;Controller::saveNetwork;
+        stateTransitions[EXIT] = &amp;Controller::<span class="hljs-built_in">exit</span>;
+
+        <span class="hljs-comment">// Set initial values</span>
+        currentState = GEN_MENU;
+        currentCursorPosition = <span class="hljs-number">0</span>;
+        renderFlag = <span class="hljs-literal">true</span>;
+    };
+
+    ~Controller()
+    {
+        <span class="hljs-keyword">delete</span> n;
+    };
+
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>;
+};
+</div></code></pre>
+<p>This class representation can be shown in the below diagram:
+<img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/Controller.png" alt="Controller"></p>
+<p>Using the State Machine, the <strong>render()</strong> function can be minimized and is more readable. The whole system is also modular because of this.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Controller::render</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// We need to make sure if we have gotten out of econio rawmode</span>
+    <span class="hljs-comment">// As you know, raw mode block the program from executing</span>
+    econio_normalmode();
+
+    <span class="hljs-comment">// Clear the screen</span>
+    econio_clrscr();
+
+    <span class="hljs-comment">// Print the banner</span>
+    printBanner();
+
+    <span class="hljs-comment">// Execute the state transition</span>
+    (<span class="hljs-keyword">this</span>-&gt;*stateTransitions[currentState])();
+    <span class="hljs-keyword">return</span>;
+}
+</div></code></pre>
+<p>We will go through an <strong>easy example</strong> of a <strong>state transition function</strong> below.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Controller::testNetwork</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// Basic output</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"To use the keys below, please follow the instructions first."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"[ESCAPE]: Escape this mode [ANY OTHER KEYS]: Clear current input"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"_______________________________________________________________________________________________________"</span> &lt;&lt; <span class="hljs-built_in">endl</span>
+         &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-comment">// Conditional Error Message</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">cin</span>.good())
+    {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Type in the number (x) and the network will return (y)."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-comment">// Color setting</span>
+        econio_textcolor(COL_RED);
+        econio_textbackground(COL_WHITE);
+
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Error: [Please enter DOUBLE]"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+        econio_textbackground(COL_RESET);
+        econio_textcolor(COL_RESET);
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Type in the number (x) and the network will return (y)."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+
+    <span class="hljs-comment">// Flush cin</span>
+    <span class="hljs-built_in">cin</span>.<span class="hljs-built_in">clear</span>();
+
+    Matrix x = Matrix(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+    Matrix y_guess = Matrix(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+
+    <span class="hljs-built_in">cin</span> &gt;&gt; x.local_array[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];
+
+    <span class="hljs-comment">// Error checking</span>
+    <span class="hljs-comment">// If error found, reset this stage</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">cin</span>.good())
+    {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// Get the predicted result</span>
+    y_guess = n-&gt;test(x);
+
+    <span class="hljs-comment">// Output the result</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Network result: "</span> &lt;&lt; y_guess.local_array[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">" Expected result: "</span> &lt;&lt; <span class="hljs-built_in">sin</span>(x.local_array[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]) * <span class="hljs-built_in">sin</span>(x.local_array[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]) &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-comment">// Wait for user next command</span>
+    econio_rawmode();
+    <span class="hljs-keyword">int</span> key = econio_getch();
+    <span class="hljs-keyword">if</span> (key == KEY_ESCAPE)
+    {
+        currentState = CONTROL_MENU;
+    }
+
+    <span class="hljs-comment">// After this transition, if the user doesn't escape, it is going to loop itself again.</span>
+    <span class="hljs-comment">// We will learn how next</span>
+}
+</div></code></pre>
+<p>As you can see from the comments and from using the program, we can see that <strong>the function is going to loop itself</strong>. But <strong>how?</strong> That is because of a <strong>nice thing with State Machine</strong>, if we <strong>don't change the state</strong>, it is going to <strong>loop the same state over and over</strong>.</p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/Main.png" alt="Main"></p>
+<p>This is the pure reason <strong>why I love computer science</strong>.</p>
+<h1 id="4-testing-and-results">4. Testing and Results</h1>
+<p>Next up, we review the best part of this project, does the Neural Network actually works?</p>
+<h2 id="41-testing-the-program">4.1. Testing the program</h2>
+<p><strong>The program's instructions</strong> are <strong>very straightfoward</strong>. In <strong>each window</strong>, there are <strong>instructions of what you should do</strong>, so a step-by-step guide <strong>will not be covered in the developers document</strong>.</p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/terminal.png" alt="Terminal"></p>
+<p>I ensure that <strong>each function of the project has been inspected carefully be me</strong>, so there is <strong>no memory leak or any potential error</strong>. The most crucial part of the program is also <strong>protected with error handling</strong>. If any error occur, the program will stop immediatly with error's description.</p>
+<p>For input fields, if you <strong>enter invalid data types</strong>, such as a string where a int would be, the program will prompt you to <strong>re-enter everything again</strong>.</p>
+<h3 id="411-structure-of-files">4.1.1 Structure of Files</h3>
+<p>The program's artifacts are generated in <strong>/data</strong> directory. This directory includes 3 files:</p>
+<ul>
+<li><strong>network.txt</strong>: Store Pre-trained network data that you can load or save into.</li>
+<li><strong>data.csv</strong>: Store training data of the network.</li>
+<li><strong>test.csv</strong>: Store test data of the network (always contain 10000 data points).</li>
+</ul>
+<p>Data structure are of the following (<strong>in data.txt and test.txt</strong>):</p>
+<table>
+<thead>
+<tr>
+<th>count</th>
+<th>x</th>
+<th>y</th>
+<th>y_guess</th>
+<th>loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index of data</td>
+<td>Input</td>
+<td>Expected output</td>
+<td>Output of network</td>
+<td>Delta of Output (y_guess - y)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="42-results-of-neural-network">4.2. Results of Neural Network</h2>
+<p>The testing setup is simple. We will create a Neural Network with <strong>2 hidden layers</strong>, with the following size: <strong>3 and 4</strong>. From this, we will train the network gradually with the following epochs: <strong>1000, 10000 and 100000</strong>. At <strong>each training session</strong>, the program <strong>automatically saves the &quot;data.csv&quot;</strong> and we use this file to <strong>compare the accuracy</strong> between each test.</p>
+<p><em>As given previously, we can create a network or load it from file. If you want to have a pretrained network, please use the setup mentioned in #3.2 and paste it into &quot;network.txt&quot; in /data/ directory.</em></p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/Input.png" alt="Input"></p>
+<p>As you can see, there are clear improvements of the network. From barely having any resembalance of the function, we can clearly see the curves.</p>
+<p><strong>*Since this is training data, not test data, there are noise from previous iterations.</strong></p>
+<p>Apart from the <strong>&quot;data.csv&quot;</strong>, the network also generate a file called <strong>&quot;test.csv&quot;</strong> at the end of each iteration. This file is a <strong>test dataset with 10000 data points</strong> and the network doesn's improve itself when generating these date points. Using this file, we can see the true performance of the network without any noise.</p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/test.png" alt="Test"></p>
+<p>Furthermore, by using <strong>count</strong> and <strong>loss</strong> of <strong>&quot;data.csv&quot;</strong>, we can see how the loss function or accuracy of the network improve in real time.</p>
+<p><img src="file:///Users/phamtuanbinh/Desktop/BOP2-BINHPHAM-NeuralNetwork/docs/md/images/conv.png" alt="Conv"></p>
+<p>If I can say one word, insaneeeeeeeeeee!!!!!!!</p>
+<h2 id="43-performance-of-neural-network">4.3. Performance of Neural Network</h2>
+<p>This <strong>Neural Network</strong> is the <strong>purest form of AI</strong> there is, except for if/else AI. Because <strong>it is written from scratch</strong>, the <strong>performance</strong> can be <strong>higher</strong> than any AI/ML that was developed with libraries and frameworks in Python or even C++.</p>
+<p>I have not tested this theory, however, if you use the program, you will see that <strong>100000 epochs only cost us around 1sec to train</strong>. This was tested on a Macbook Pro with M1 Pro and 32Gb of Ram.</p>
+<p>Potential upgrades of this Neural Network could be using different Matrix libraries that supports hardware acceleration. However, this is <strong>out of scope for the project</strong>. I'm only including this part because the reader might be a geek like me.</p>
+<h1 id="5-conclusion-and-references">5. Conclusion and References</h1>
+<h1 id="51-conclusion">5.1 Conclusion</h1>
+<p><strong>Thank you for reading this documentation</strong>. I really appreciate this.</p>
+<p>This project was insanely fun for me and I learned a lot through doing this.</p>
+<p>For people who read this document carefully, I have included some easter eggs in the comments of the code in this document. Please find the <strong>5 C++ infinity stones</strong>.</p>
+<h1 id="52-references">5.2 References</h1>
+<p>The project couldn't be done without the resources of:</p>
+<ul>
+<li><strong>Matt Mazur</strong>: https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/</li>
+<li><strong>Lyndon Duong</strong>: https://www.lyndonduong.com/mlp-build-cpp/</li>
+<li><strong>GeekForGeeks Writer</strong>: https://www.geeksforgeeks.org/ml-neural-network-implementation-in-c-from-scratch/</li>
+<li><strong>czirkoszoltan</strong>: https://github.com/czirkoszoltan/c-econio</li>
+</ul>
+
+</body>
+</html>

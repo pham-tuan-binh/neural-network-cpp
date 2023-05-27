@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Arial", sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      margin: 0;
+    }
+    .language-cpp .keyword {
+      color: #008000;
+    }
+    .language-cpp .comment {
+      color: #808080;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Class</th>
+      <th>NeuralNetwork</th>
+    </tr>
+    <tr>
+      <td>Atributes</td>
+      <td>
+        <pre><code class="language-cpp">- topo: Topology
+- learningRate: double
+- weights: Matrix*
+- biases: Matrix*
+- activations: Matrix*
+- errors: Matrix*</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>Constructors</td>
+      <td>
+        <pre><code class="language-cpp">
++ NeuralNetwork(topo: Topology, learningRate: double = 0.05)
++ NeuralNetwork(file: ifstream&)
+      </td>
+    </tr>
+    <tr>
+      <td>Destructor</td>
+      <td>
+        <pre><code class="language-cpp">
++ ~NeuralNetwork()
+      </td>
+    </tr>
+    <tr>
+      <td>Methods</td>
+      <td>
+        <pre><code class="language-cpp">
++ initNetwork(): void
++ forwardPass(input: Matrix): void
++ backwardPropagate(output: Matrix): void
++ saveNetwork(file: ofstream&): void
++ train(input: Matrix, output: Matrix): Matrix
++ test(input: Matrix): Matrix</code></pre>
+      </td>
+    </tr>
+  </table>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-cpp.min.js"></script>
+</body>
+</html>
